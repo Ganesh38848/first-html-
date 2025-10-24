@@ -1,0 +1,539 @@
+/* Login3D.css */
+.login3d-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  perspective: 1000px;
+}
+
+/* Animated Background Cubes */
+.bg-cubes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.cube {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+  animation: cubeFloat 20s infinite linear;
+}
+
+.cube:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.cube:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-delay: -5s;
+  background: rgba(78, 205, 196, 0.1);
+}
+
+.cube:nth-child(3) {
+  top: 80%;
+  left: 20%;
+  animation-delay: -10s;
+  background: rgba(255, 206, 86, 0.1);
+}
+
+.cube:nth-child(4) {
+  top: 40%;
+  left: 60%;
+  animation-delay: -15s;
+  background: rgba(120, 111, 166, 0.1);
+}
+
+.cube:nth-child(5) {
+  top: 70%;
+  left: 40%;
+  animation-delay: -20s;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+@keyframes cubeFloat {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) translateZ(100px);
+  }
+}
+
+/* 3D Particles */
+.particles-3d {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle-3d {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: particleFloat 15s infinite linear;
+  animation-delay: var(--delay);
+}
+
+.particle-3d:nth-child(odd) {
+  background: #ff6b6b;
+}
+
+.particle-3d:nth-child(even) {
+  background: #4ecdc4;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: 
+      translate3d(
+        calc(var(--i) * 10px),
+        calc(var(--i) * 5px),
+        calc(var(--i) * 100px)
+      )
+      rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: 
+      translate3d(
+        calc(var(--i) * 50px + 100px),
+        calc(var(--i) * 25px - 200px),
+        calc(var(--i) * 200px)
+      )
+      rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Main 3D Card */
+.login3d-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 
+    0 25px 45px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(120, 111, 166, 0.3);
+  transition: transform 0.1s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.login3d-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ff6b6b, #4ecdc4, transparent);
+  animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 3D Header */
+.card3d-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-3d-spin {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.sphere {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: sphereRotate 8s infinite linear;
+}
+
+.ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid;
+  border-radius: 50%;
+  animation: ringPulse 4s infinite ease-in-out;
+}
+
+.ring:nth-child(1) {
+  border-color: #ff6b6b;
+  transform: rotateY(70deg);
+  animation-delay: 0s;
+}
+
+.ring:nth-child(2) {
+  border-color: #4ecdc4;
+  transform: rotateX(70deg);
+  animation-delay: -1.33s;
+}
+
+.ring:nth-child(3) {
+  border-color: #ffe66d;
+  transform: rotateZ(70deg);
+  animation-delay: -2.66s;
+}
+
+@keyframes sphereRotate {
+  0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.title-3d {
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title-char {
+  display: inline-block;
+  animation: titleWave 3s ease-in-out infinite;
+  animation-delay: calc(var(--char-index) * 0.1s);
+}
+
+@keyframes titleWave {
+  0%, 100% { 
+    transform: translateY(0px) rotateX(0deg); 
+    color: white;
+  }
+  25% { 
+    transform: translateY(-10px) rotateX(20deg); 
+    color: #ff6b6b;
+  }
+  75% { 
+    transform: translateY(5px) rotateX(-10deg); 
+    color: #4ecdc4;
+  }
+}
+
+.subtitle-3d {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* 3D Input Fields */
+.login3d-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.input3d-group {
+  position: relative;
+}
+
+.input3d-container {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.input3d-field {
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+}
+
+.input3d-field:focus {
+  outline: none;
+  border-color: rgba(255, 107, 107, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateZ(20px) scale(1.02);
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+.input3d-label {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  transform-origin: left;
+}
+
+.input3d-field:focus + .input3d-label,
+.input3d-field:not(:placeholder-shown) + .input3d-label {
+  top: -12px;
+  left: 15px;
+  font-size: 12px;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: white;
+  transform: translateZ(30px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.input3d-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+.input3d-field:focus ~ .input3d-glow {
+  width: 100%;
+}
+
+/* 3D Button */
+.btn3d {
+  position: relative;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff6b6b, #786fa6, #4ecdc4);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  margin-top: 10px;
+}
+
+.btn3d:hover:not(.loading) {
+  transform: translateZ(30px) translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 25px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 107, 107, 0.4);
+}
+
+.btn3d:active {
+  transform: translateZ(10px) translateY(0) scale(1);
+}
+
+.btn3d.loading {
+  pointer-events: none;
+  background: linear-gradient(135deg, #786fa6, #786fa6);
+}
+
+.btn3d-text {
+  position: relative;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+
+.btn3d-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.btn3d:hover .btn3d-glow {
+  left: 100%;
+}
+
+.btn3d-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn3d:hover .btn3d-hover {
+  opacity: 1;
+}
+
+/* 3D Register Section */
+.register3d-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.register3d-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.register3d-link {
+  color: #ffe66d;
+  cursor: pointer;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 230, 109, 0.5);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.register3d-link:hover {
+  color: #ff6b6b;
+  text-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+}
+
+.register3d-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+  transition: width 0.3s ease;
+}
+
+.register3d-link:hover::after {
+  width: 100%;
+}
+
+/* Corner Decorations */
+.corner-deco {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid;
+  opacity: 0.3;
+  animation: cornerRotate 10s infinite linear;
+}
+
+.corner-tl {
+  top: 50px;
+  left: 50px;
+  border-color: #ff6b6b;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-tr {
+  top: 50px;
+  right: 50px;
+  border-color: #4ecdc4;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-bl {
+  bottom: 50px;
+  left: 50px;
+  border-color: #ffe66d;
+  border-right: none;
+  border-top: none;
+}
+
+.corner-br {
+  bottom: 50px;
+  right: 50px;
+  border-color: #786fa6;
+  border-left: none;
+  border-top: none;
+}
+
+@keyframes cornerRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Animations */
+.success-animation {
+  animation: successPulse 1s ease-in-out;
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(78, 205, 196, 0.5); }
+  100% { transform: scale(1); }
+}
+
+.error-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotateY(0); }
+  25% { transform: translateX(-10px) rotateY(-5deg); }
+  75% { transform: translateX(10px) rotateY(5deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login3d-card {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  
+  .title-3d {
+    font-size: 28px;
+  }
+  
+  .corner-deco {
+    width: 60px;
+    height: 60px;
+  }
+}

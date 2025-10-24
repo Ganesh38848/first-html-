@@ -1,0 +1,122 @@
+/* Add these styles to your existing Login3D.css */
+
+/* 3D Checkbox Styles */
+.form-options-3d {
+  margin: 15px 0;
+}
+
+.checkbox3d-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.checkbox3d-container input {
+  display: none;
+}
+
+.checkmark3d {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  margin-right: 12px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.checkbox3d-container:hover .checkmark3d {
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateZ(10px) scale(1.1);
+}
+
+.checkbox3d-container input:checked + .checkmark3d {
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  border-color: transparent;
+  transform: translateZ(15px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.checkbox3d-container input:checked + .checkmark3d::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(5px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Quick Info Section */
+.quick-info-3d {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  color: #ffe66d;
+  transform: translateY(-2px);
+}
+
+.info-icon {
+  font-size: 14px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.info-text {
+  font-weight: 500;
+}
+
+/* Enhanced title character animations for Register */
+.title-char {
+  display: inline-block;
+  animation: titleWave 3s ease-in-out infinite;
+  animation-delay: calc(var(--char-index) * 0.1s);
+}
+
+@keyframes titleWave {
+  0%, 100% { 
+    transform: translateY(0px) rotateX(0deg); 
+    color: white;
+  }
+  25% { 
+    transform: translateY(-10px) rotateX(20deg); 
+    color: #ff6b6b;
+  }
+  75% { 
+    transform: translateY(5px) rotateX(-10deg); 
+    color: #4ecdc4;
+  }
+}
+
+/* Responsive adjustments for Register */
+@media (max-width: 480px) {
+  .quick-info-3d {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .checkbox3d-container {
+    font-size: 13px;
+  }
+}
